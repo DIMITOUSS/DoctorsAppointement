@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Form, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";
-import {useDispatch} from 'react-redux'
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { hideLoading, showLoading } from "../redux/alertsSlice";
@@ -12,7 +12,10 @@ function Login() {
   const onComplete = async (values) => {
     try {
       dispatch(showLoading());
-      const response = await axios.post('https://doctorsappointement-backend.onrender.com/api/user/login', values);
+      const response = await axios.post(
+        "https://doctorsappointement-backend.onrender.com/api/user/login",
+        values
+      );
       dispatch(hideLoading());
       if (response.data.success) {
         toast.success(response.data.message);
@@ -39,7 +42,10 @@ function Login() {
             <Input placeholder="Password" type="password" />
           </Form.Item>
 
-          <Button className="primary-button my-2 full-width-button" htmlType="submit">
+          <Button
+            className="primary-button my-2 full-width-button"
+            htmlType="submit"
+          >
             LOGIN
           </Button>
 

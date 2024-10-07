@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react";
 import { Button, Form, Input } from "antd";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import axios from 'axios';
-import toast from 'react-hot-toast';
-import { hideLoading, showLoading } from '../redux/alertsSlice';
+import axios from "axios";
+import toast from "react-hot-toast";
+import { hideLoading, showLoading } from "../redux/alertsSlice";
 
 function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const onComplete = async(values) => {
+  const onComplete = async (values) => {
     try {
       dispatch(showLoading());
       const response = await axios.post(
@@ -22,13 +22,13 @@ function Register() {
         toast("Redirecting to login page");
         navigate("/login");
       } else {
-        toast.error(response.data.message); 
+        toast.error(response.data.message);
       }
     } catch (error) {
       dispatch(hideLoading());
-      toast.error('something went wrong'); 
+      toast.error("something went wrong");
     }
-  }
+  };
   return (
     <div className="auth">
       <div className="auth-form card p-3">
@@ -60,4 +60,4 @@ function Register() {
   );
 }
 
-export default Register
+export default Register;
